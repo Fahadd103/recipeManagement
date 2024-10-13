@@ -20,10 +20,10 @@ function App() {
           <Header />
           <main className="flex-grow container mx-auto px-4 py-8">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/recipe/:id" element={<RecipeDetail />} />
+              <Route path="/recipe/:id" element={<PrivateRoute><RecipeDetail /></PrivateRoute>} />
               <Route path="/create-recipe" element={<PrivateRoute><CreateEditRecipe /></PrivateRoute>} />
               <Route path="/edit-recipe/:id" element={<PrivateRoute><CreateEditRecipe /></PrivateRoute>} />
             </Routes>

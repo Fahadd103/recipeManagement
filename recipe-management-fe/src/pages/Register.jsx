@@ -12,10 +12,12 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await register({ username, email, password });
-      navigate('/login');
+     await register({ username, email, password });
     } catch (err) {
-      setError('Failed to register. Please try again.');
+        setError('Failed to register. Please try again.');
+    }
+    finally{
+        navigate('/login');
     }
   };
 
