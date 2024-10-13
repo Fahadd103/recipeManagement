@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useContext, useEffect } from 'react';
+import {jwtDecode} from 'jwt-decode';
+
 
 const AuthContext = createContext(null);
 
@@ -9,23 +11,28 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      // You might want to validate the token here
-      setUser({ token });
+        try {
+          const decodedToken = jwtDecode(token);
+          setUser({ ...decodedToken, token });
+        } catch (error) {
+          console.error('Invalid token', error);
+          localStorage.removeItem('token');
+        }
     }
   }, []);
 
   const login = (token) => {
-    localStorage.setItem('token', token);
-    setUser({ token });
+    if(token){
+        const decodedToken = jwtDecode(token);
+        localStorage.setItem('token', token);
+        setUser({ ...decodedToken, token });
+    }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
-  };
+ 
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, setUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRecipe, deleteRecipe } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
@@ -12,21 +12,22 @@ function RecipeDetail() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchRecipe = async () => {
-        try {
-          setLoading(true);
-          const data = await getRecipe(id);
-          setRecipe(data);
-        } catch (err) {
-          setError('Failed to fetch recipe details');
-        } finally {
-          setLoading(false);
-        }
-      };
     fetchRecipe();
   }, [id]);
 
- 
+  console.log(user);
+
+  const fetchRecipe = async () => {
+    try {
+      setLoading(true);
+      const data = await getRecipe(id);
+      setRecipe(data);
+    } catch (err) {
+      setError('Failed to fetch recipe details');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {
@@ -39,10 +40,17 @@ function RecipeDetail() {
     }
   };
 
+  const handleEdit = () => {
+    navigate(`/edit-recipe/${id}`);
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   if (!recipe) return <div>Recipe not found</div>;
 
+  // Assuming the JWT contains a 'nameid' claim for the user ID
+  const isOwner = user && user['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+  console.log(isOwner);
   return (
     <div className="max-w-2xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
@@ -61,10 +69,10 @@ function RecipeDetail() {
           <li key={index}>{step}</li>
         ))}
       </ol>
-      {user && user.id === recipe.userId && (
+      {isOwner && (
         <div className="mt-4 space-x-4">
           <button
-            onClick={() => navigate(`/edit-recipe/${id}`)}
+            onClick={handleEdit}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
             Edit Recipe

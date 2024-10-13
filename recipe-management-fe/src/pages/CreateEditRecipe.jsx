@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRecipe, createRecipe, updateRecipe } from '../utils/api';
 
@@ -7,8 +7,8 @@ function CreateEditRecipe() {
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState({
     title: '',
-    ingredients: [],
-    steps: [],
+    ingredients: [''],
+    steps: [''],
     preparationTime: 0,
     category: '',
     imageUrl: ''

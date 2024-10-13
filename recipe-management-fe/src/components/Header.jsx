@@ -1,8 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 function Header() {
-  const { user, logout } = useAuth();
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+    navigate('/login');
+  };
 
   return (
     <header className="bg-blue-600 text-white p-4">
@@ -14,7 +21,6 @@ function Header() {
             {user ? (
               <>
                 <li><Link to="/create-recipe">Create Recipe</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
                 <li><button onClick={logout}>Logout</button></li>
               </>
             ) : (
