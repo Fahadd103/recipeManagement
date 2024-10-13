@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\recipeManagement\\RecipeManagementSystem\\RecipeManagementSystem.csproj": {}
+    "C:\\Users\\User\\Desktop\\RecipeManagementSystem\\RecipeManagementSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\recipeManagement\\RecipeManagementSystem\\RecipeManagementSystem.csproj": {
+    "C:\\Users\\User\\Desktop\\RecipeManagementSystem\\RecipeManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\recipeManagement\\RecipeManagementSystem\\RecipeManagementSystem.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\RecipeManagementSystem\\RecipeManagementSystem.csproj",
         "projectName": "RecipeManagementSystem",
-        "projectPath": "C:\\Users\\User\\Desktop\\recipeManagement\\RecipeManagementSystem\\RecipeManagementSystem.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\RecipeManagementSystem\\RecipeManagementSystem.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\recipeManagement\\RecipeManagementSystem\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\RecipeManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,13 +43,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "BCrypt.Net-Next": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[4.0.3, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[8.0.10, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.29.0, )"
             }
           },
           "imports": [

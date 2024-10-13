@@ -1,6 +1,0 @@
-@RecipeManagementSystem_HostAddress = http://localhost:5078
-
-GET {{RecipeManagementSystem_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
