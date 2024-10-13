@@ -39,12 +39,12 @@ namespace RecipeManagementSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRecipe([FromBody] Recipe recipe)
         {
-            recipe.UserId = GetCurrentUserId(); // Set the UserId to the current user's ID
+            recipe.UserId = GetCurrentUserId(); 
             await _recipeRepository.CreateRecipeAsync(recipe);
             return CreatedAtAction(nameof(GetRecipe), new { id = recipe.Id }, recipe);
         }
 
-        private string GetCurrentUserId() // Implementing the method to get the current user's ID
+        private string GetCurrentUserId()
         {
             return User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
         }
