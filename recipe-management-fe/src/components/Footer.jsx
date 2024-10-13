@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer className="bg-gray-200 p-4 mt-8">
       <div className="container mx-auto text-center">
-        <p>&copy; 2023 Recipe Management System. All rights reserved.</p>
+        <p>&copy; 2024 Recipe Management System. All rights reserved.</p>
       </div>
     </footer>
   );

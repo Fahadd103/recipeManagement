@@ -19,6 +19,10 @@ async function fetchWithAuth(url, options = {}) {
   if (!response.ok) {
     throw new Error('API request failed');
   }
+  
+  if(response.status === 204){
+    return null;
+  }
 
   return response.json();
 }

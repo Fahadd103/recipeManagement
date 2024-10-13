@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function RecipeCard({ recipe }) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <img src={recipe.image} alt={recipe.title} className="w-full h-48 object-cover" />
+      <img src={recipe.imageUrl} alt={recipe.title} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h3 className="text-xl font-semibold mb-2">{recipe.title}</h3>
         <p className="text-gray-600 mb-2">Prep time: {recipe.preparationTime} mins</p>
